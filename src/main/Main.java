@@ -24,9 +24,59 @@ public class Main {
             for (int i = 0; i < 3; i++) {
                 results[i] = line.charAt(i);
             }
-            int opponentPoints = 0;
+            //points are awarded to user IF
+            //they play Rock(x) = 1, Paper(y) = 2, Scissors(z) = 3
+            //and IF
+            //they Win = 6, Draw = 3
+
             int myPoints = 0;
-            if (results[0] == 'A') {
+            String opponentChoice = null;
+            String myChoice = null;
+            if (line.charAt(0) == 'A') {
+                opponentChoice = "Rock";
+            }
+            if (line.charAt(0) == 'B') {
+                opponentChoice = "Paper";
+            }
+            if (line.charAt(0) == 'C') {
+                opponentChoice = "Scissors";
+            }
+
+            if (line.charAt(2) == 'X') {
+                myChoice = "Rock";
+                myPoints = 1;
+            }
+            if (line.charAt(2) == 'Y') {
+                myChoice = "Paper";
+                myPoints = 2;
+            }
+            if (line.charAt(2) == 'Z') {
+                myChoice = "Scissors";
+                myPoints = 3;
+            }
+
+            if (opponentChoice.equalsIgnoreCase(myChoice)) {
+                myPoints = myPoints + 3;
+            }
+            if (opponentChoice.equalsIgnoreCase("Rock") && myChoice.equalsIgnoreCase("Paper")) {
+                myPoints = myPoints + 6;
+            }
+            if (opponentChoice.equalsIgnoreCase("Paper") && myChoice.equalsIgnoreCase("Scissors")) {
+                myPoints = myPoints + 6;
+            }
+            if (opponentChoice.equalsIgnoreCase("Scissors") && myChoice.equalsIgnoreCase("Rock")) {
+                myPoints = myPoints + 6;
+            }
+            points = points + myPoints;
+        }
+        return points;
+
+    }
+}
+
+
+/*
+if (results[0] == 'A') {
                 opponentPoints += 1;
             } else if (results[0] == 'B') {
                 opponentPoints += 2;
@@ -47,8 +97,4 @@ public class Main {
                 myPoints += 3;
             }
             points += myPoints;
-        }
-        return points;
-
-    }
-}
+ */
